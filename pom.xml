@@ -8,5 +8,6 @@
   <modules>
   	<module>mongodb</module>
   	<module>postgres</module>
+  	<module>webapp</module>
   </modules>
 </project>

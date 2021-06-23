@@ -1,0 +1,34 @@
+package com.teamone.webapp.controllers;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.teamone.mongodb.contracts.IUserDao;
+import com.teamone.mongodb.dao.UserDAO;
+import com.teamone.mongodb.entity.User;
+
+@WebServlet("/dashboard")
+public class DashboardContorller extends HttpServlet{
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		IUserDao userDao = new UserDAO();
+		
+		res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
+		
+		out.println("<html>");
+		out.println("<body>");
+		for(User user: userDao.getAll()) {	
+			out.println("<li>" + user.getEmpName() + "</li>");
+		}
+		out.println("</body>");
+		out.println("</html>");
+	}
+}
