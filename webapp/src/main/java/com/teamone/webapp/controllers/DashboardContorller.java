@@ -9,24 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teamone.mongodb.contracts.IUserDao;
-import com.teamone.mongodb.dao.UserDAO;
-import com.teamone.mongodb.entity.User;
+import com.teamone.mongodb.contracts.IQuestionDao;
+import com.teamone.mongodb.dao.QuestionDAO;
+import com.teamone.mongodb.entity.Question;
 
 @WebServlet("/dashboard")
 public class DashboardContorller extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		IUserDao userDao = new UserDAO();
+		IQuestionDao questionDao = new QuestionDAO();
 		
 		res.setContentType("text/html");
 		PrintWriter out = res.getWriter();
 		
 		out.println("<html>");
 		out.println("<body>");
-		for(User user: userDao.getAll()) {	
-			out.println("<li>" + user.getEmpName() + "</li>");
+		for(Question user: questionDao.getAll()) {	
+			out.println("<li>" + user.getDescription() + "</li>");
 		}
 		out.println("</body>");
 		out.println("</html>");
