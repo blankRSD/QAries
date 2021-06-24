@@ -1,14 +1,8 @@
-package com.naveen.sql.client;
-
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaQuery;
+package com.teamone.postgres.client;
 
 import com.teamone.postgres.entity.User;
 import com.teamone.postgres.contracts.IUserDAO;
 import com.teamone.postgres.dao.UserDAO;
-import com.teamone.postgres.util.JPAUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
