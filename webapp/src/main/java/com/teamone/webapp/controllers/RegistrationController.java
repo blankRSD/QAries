@@ -26,10 +26,19 @@ public class RegistrationController extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		String registerMessage = "";
-
-		IUserDAO dao = new UserDAO();
-		dao.insert(new User(username, email, password));
-		registerMessage = "Successfully registered";
+		
+		if(session.isNew()) {
+			IUserDAO dao = new UserDAO();
+			dao.insert(new User(username, email, password));
+			
+			session.setAttribute("username", username);
+			session.setAttribute("email", email);
+			registerMessage = "Successfully registered";
+		}
+		else {
+			registerMessage = "You are already registered";
+			session.invalidate();
+		}
 		
 		resp.setContentType("text/html");
 		req.setAttribute("registerMessage", registerMessage);
