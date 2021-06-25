@@ -21,7 +21,7 @@ public class UserDAO implements IUserDAO {
 	public boolean insert(User user) {
 		try {
 			entityManager.getTransaction().begin(); 
-			System.out.println(user);
+//			System.out.println(user);
 			entityManager.persist(user);
 			entityManager.getTransaction().commit();
 			return true;
