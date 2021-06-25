@@ -8,9 +8,9 @@ public class LoginCretor {
 	private LoginCretor() {
 	}
 	public static User createLoginBean(HttpServletRequest request) {
-		User login = new User();
-		login.setUsername(request.getParameter("uname"));
-		login.setPassword(request.getParameter("password"));
-		return login;
+		User userLogin = new User();
+		userLogin.setEmail(request.getParameter("email"));
+		userLogin.setPassword(request.getParameter("password"));
+		return userLogin;
 	}
 }

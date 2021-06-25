@@ -8,9 +8,7 @@ import com.teamone.postgres.contracts.IUserDAO;
 import com.teamone.postgres.entity.User;
 import com.teamone.postgres.util.JPAUtil;
 
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class UserDAO implements IUserDAO {
 	
 	EntityManager entityManager;
@@ -23,7 +21,8 @@ public class UserDAO implements IUserDAO {
 	public boolean insert(User user) {
 		try {
 			entityManager.getTransaction().begin(); 
-			entityManager.merge(user);
+			System.out.println(user);
+			entityManager.persist(user);
 			entityManager.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
@@ -36,6 +35,13 @@ public class UserDAO implements IUserDAO {
 	public User getOne(int userId) {
 		
 		return entityManager.find(User.class, userId); 
+		
+	}
+	
+	@Override
+	public User fetchUser(String email) {
+		
+		return entityManager.find(User.class,email); 
 		
 	}
 

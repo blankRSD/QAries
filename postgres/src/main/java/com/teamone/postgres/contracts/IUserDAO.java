@@ -15,4 +15,6 @@ public interface IUserDAO {
 	public User update(User user);
 
 	public void delete(int userId);
+
+	public User fetchUser(String email);
 }

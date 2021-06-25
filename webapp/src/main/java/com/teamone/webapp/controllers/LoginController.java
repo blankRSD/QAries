@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.teamone.postgres.contracts.IUserDAO;
+import com.teamone.postgres.dao.UserDAO;
 import com.teamone.postgres.entity.User;
 import com.teamone.webapp.beancretor.LoginCretor;
 import com.teamone.webapp.services.LoginService;
@@ -21,11 +23,16 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		resp.setContentType("text/html");
-		User login = LoginCretor.createLoginBean(req);
+		User userLogin = LoginCretor.createLoginBean(req);
 		
-		if(new LoginService().loginValidate(login)) {
+		if(new LoginService().loginValidate(userLogin)) {
 			HttpSession session   = req.getSession();
-			session.setAttribute("name", req.getParameter("username"));
+			IUserDAO dao = new UserDAO();
+			User newUser= dao.fetchUser(userLogin.getEmail());
+			session.setAttribute("name", newUser.getUsername());
+			session.setAttribute("email", newUser.getEmail());
+			session.setAttribute("userid", newUser.getUserId());
+//			session.setAttribute("name", req.getParameter("username"));
 			req.setAttribute("registerMessage", "successful login");
 			req.getRequestDispatcher("WEB-INF/views/dashboard.jsp").forward(req, resp);
 		}else {

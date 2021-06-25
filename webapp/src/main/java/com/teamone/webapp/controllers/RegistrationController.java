@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.teamone.postgres.contracts.IUserDAO;
 import com.teamone.postgres.dao.UserDAO;
@@ -23,21 +22,22 @@ public class RegistrationController extends HttpServlet {
 		String email = req.getParameter("email");
 		
 		
-		HttpSession session = req.getSession();
+//		HttpSession session = req.getSession();
 		
 		String registerMessage = "";
+//		session.isNew()
 		
-		if(session.isNew()) {
+		if(true) {
 			IUserDAO dao = new UserDAO();
 			dao.insert(new User(username, email, password));
 			
-			session.setAttribute("username", username);
-			session.setAttribute("email", email);
+//			session.setAttribute("username", username);
+//			session.setAttribute("email", email);
 			registerMessage = "Successfully registered";
 		}
 		else {
 			registerMessage = "You are already registered";
-			session.invalidate();
+//			session.invalidate();
 		}
 		
 		resp.setContentType("text/html");

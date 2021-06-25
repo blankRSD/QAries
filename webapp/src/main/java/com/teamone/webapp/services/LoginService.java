@@ -5,11 +5,11 @@ import com.teamone.postgres.dao.UserDAO;
 import com.teamone.postgres.entity.User;
 
 public class LoginService {
-	public boolean loginValidate(User login) {
+	public boolean loginValidate(User userLogin) {
 		
 		IUserDAO dao = new UserDAO();
-		User user = dao.getOne(login.getUserId());
-		return login.getUsername().equals(user.getUsername()) && login.getPassword().equals(user.getPassword()); 
+		User user = dao.fetchUser(userLogin.getEmail());
+		return userLogin.getUsername().equals(user.getUsername()) && userLogin.getPassword().equals(user.getPassword()); 
 	}
 
 }
