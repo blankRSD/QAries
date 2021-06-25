@@ -1,0 +1,89 @@
+[{
+  "_id": {
+    "$oid": "60d5b6dc843e9e60f4ac498b"
+  },
+  "description": "A Description",
+  "modifiedAt": "2021-06-25 15:53:00",
+  "questionId": 110,
+  "userId": 8,
+  "upVotes": 10,
+  "isBest": true,
+  "answerid": 1
+},{
+  "_id": {
+    "$oid": "60d5ba4f5a24fdd60e524f41"
+  },
+  "answerId": 2,
+  "best": true,
+  "description": "Answer is here",
+  "modifiedAt": "2021-06-25 16:43:19",
+  "questionId": 110,
+  "userID": 9,
+  "votes": 10
+},{
+  "_id": {
+    "$oid": "60d5bb3a5a24fdd60e524fce"
+  },
+  "answerId": 3,
+  "best": true,
+  "description": "Answer is here",
+  "modifiedAt": "2021-06-25 16:47:14",
+  "questionId": 110,
+  "userID": 9,
+  "votes": 10
+},{
+  "_id": {
+    "$oid": "60d5eb7f5a24fdd60e525d9f"
+  },
+  "answerId": 150,
+  "best": false,
+  "description": "Do you know ??",
+  "modifiedAt": "2021-06-25 20:13:11",
+  "questionId": 0,
+  "userID": 0,
+  "votes": 0
+},{
+  "_id": {
+    "$oid": "60d5eb995a24fdd60e525dbe"
+  },
+  "answerId": 160,
+  "best": false,
+  "description": "do you know me ?",
+  "modifiedAt": "2021-06-25 20:13:37",
+  "questionId": 0,
+  "userID": 0,
+  "votes": 0
+},{
+  "_id": {
+    "$oid": "60d5efe85a24fdd60e5261e3"
+  },
+  "answerId": 89,
+  "best": false,
+  "description": "Prateek",
+  "modifiedAt": "2021-06-25 20:32:00",
+  "questionId": 0,
+  "userID": 0,
+  "votes": 0
+},{
+  "_id": {
+    "$oid": "60d5f0635a24fdd60e5262ae"
+  },
+  "answerId": 87,
+  "best": false,
+  "description": "Kol",
+  "modifiedAt": "2021-06-25 20:34:03",
+  "questionId": 0,
+  "userID": 0,
+  "votes": 0
+},{
+  "_id": {
+    "$oid": "60d5f5115a24fdd60e526816"
+  },
+  "answerId": 89,
+  "best": false,
+  "description": "Raj ",
+  "modifiedAt": "2021-06-25 20:53:59",
+  "questionId": 0,
+  "userID": 0,
+  "votes": 0
+}]

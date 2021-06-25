@@ -1,7 +1,8 @@
 <html>
 	<body>
 		<h2>Hello World!</h2>
-		<a href="./insertquestion.html">insert-question</a>
+		<a href="./login.html">login</a>
+		
 		
 	</body>
 </html>
