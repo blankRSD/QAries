@@ -40,8 +40,10 @@ public class UserDAO implements IUserDAO {
 	
 	@Override
 	public User fetchUser(String email) {
-		
-		return entityManager.find(User.class,email); 
+
+		return entityManager.createQuery("SELECT u FROM User u WHERE u.email LIKE :email", User.class)
+				.setParameter("email", email)
+				.getSingleResult();
 		
 	}
 
