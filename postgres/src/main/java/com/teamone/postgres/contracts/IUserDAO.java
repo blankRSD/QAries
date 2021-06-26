@@ -8,7 +8,9 @@ public interface IUserDAO {
 
 	public boolean insert(User user);
 
-	public User getOne(int userId);
+	public User getById(int userId);
+
+	public User getByEmail(String email);
 
 	public List<User> getAll();
 

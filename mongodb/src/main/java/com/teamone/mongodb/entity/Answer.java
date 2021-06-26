@@ -9,12 +9,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Question {
+public class Answer {
 
+	private int answerId;
 	private int questionId;
-	private String title;
 	private String description;
 	private int votes;
+	private int userID;
 	private String modifiedAt;
-	private int userId;
+	private boolean isBest;
 }

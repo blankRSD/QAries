@@ -1,19 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page isELIgnored="false"  %>
+<%@ include file="../layouts/header.jsp"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="../layouts/navbar.jsp"%>
 
-<h1>Dashboard</h1>
+<div class="container-lg my-2">
 
-<h3>${registerMessage}</h3>
+	<h2>Dashboard</h2>
 
-
-</body>
-</html>
+	<a href="question" class="btn btn-primary">Ask Question</a>
+	
+</div>
+	
+<%@ include file="../layouts/footer.jsp"%>

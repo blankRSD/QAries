@@ -3,14 +3,13 @@ package com.teamone.postgres.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.teamone.postgres.contracts.IUserDAO;
 import com.teamone.postgres.entity.User;
 import com.teamone.postgres.util.JPAUtil;
 
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class UserDAO implements IUserDAO {
 	
 	EntityManager entityManager;
@@ -33,9 +32,25 @@ public class UserDAO implements IUserDAO {
 	}
 
 	@Override
-	public User getOne(int userId) {
-		// TODO Auto-generated method stub
+	public User getById(int userId) {
+		
+		return entityManager.find(User.class, userId); 
+		
+	}
+	
+	@Override
+	public User getByEmail(String email) {
+
+		Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.email LIKE :email", User.class)
+						.setParameter("email", email);
+		
+		try {
+			return (User) query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
+		
 	}
 
 	@Override
@@ -53,7 +68,6 @@ public class UserDAO implements IUserDAO {
 	@Override
 	public void delete(int userId) {
 		// TODO Auto-generated method stub
-
 	}
 
 }
