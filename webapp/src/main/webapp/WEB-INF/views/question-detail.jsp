@@ -15,7 +15,7 @@
 	    	${question.getDescription()}
 	    </p>
 	    <p>
-	    	<form action='insert-answer' method='post'>
+	    	<form action='question-detail' method='post'>
 	    		<div class="my-3">
 					<input type='text' name='answerId' class="form-control" placeholder="answerId" />
 	    		</div>

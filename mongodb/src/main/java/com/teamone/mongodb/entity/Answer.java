@@ -12,7 +12,7 @@ import lombok.ToString;
 public class Answer {
 
 	private int answerId;
-	private int questionId;
+	private String questionId;
 	private String description;
 	private int votes;
 	private int userID;

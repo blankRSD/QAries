@@ -12,7 +12,7 @@ public interface IQuestionDOO {
 	
 	public boolean insertMany(List<Question> questionList);
 
-	public Question getOneQuestionWithQuestionId(int id);
+	public Question getOneQuestionWithQuestionId(String id);
 
 	public Question getOneRecord(int votes);
 
@@ -22,7 +22,7 @@ public interface IQuestionDOO {
 
 	public boolean updateQuestion();
 
-	public boolean deleteOne(int questionId);
+	public boolean deleteOne(String questionId);
 
-	public boolean upsertFuntion(int questionId);
+	public boolean upsertFuntion(String questionId);
 }

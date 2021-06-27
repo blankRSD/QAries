@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class Question {
 
-	private int questionId;
+	private String questionId;
 	private String title;
 	private String description;
 	private int votes;

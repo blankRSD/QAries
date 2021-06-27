@@ -172,7 +172,7 @@ public class AnswerDOO implements IAnswerDOO {
 	}
 	
 	@Override
-	public List<Answer> getAnswerWithQid(int qid){
+	public List<Answer> getAnswerWithQid(String qid){
 		try {
 			MongoClient mc = MongoConn.mongoUtil();
 			MongoDatabase AnswerTable = mc.getDatabase("question");
