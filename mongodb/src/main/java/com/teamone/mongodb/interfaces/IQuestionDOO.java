@@ -25,4 +25,6 @@ public interface IQuestionDOO {
 	public boolean deleteOne(String questionId);
 
 	public boolean upsertFuntion(String questionId);
+
+	//public Question getOneQuestionWithQuestionId(String parameter);
 }

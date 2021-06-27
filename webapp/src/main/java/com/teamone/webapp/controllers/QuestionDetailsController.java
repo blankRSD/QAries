@@ -31,9 +31,7 @@ public class QuestionDetailsController extends HttpServlet {
 		session.setAttribute("qid", req.getParameter("qid"));
 		//String qid=String.valueOf();
 		
-		if (session.isNew()) {
-			
-		} else {
+		if (session.getId()==session.getAttribute("sessionid")) {
 			IQuestionDOO qdao = new QuestionDOO();
 			Question question = qdao.getOneQuestionWithQuestionId(req.getParameter("qid"));
 			IAnswerDOO dao = new AnswerDOO();
@@ -45,7 +43,9 @@ public class QuestionDetailsController extends HttpServlet {
 			req.getRequestDispatcher("WEB-INF/views/question-detail.jsp").forward(req, resp);
 			
 			
-		}
+		} 
+		req.getRequestDispatcher("WEB-INF/views/invalidlogin.jsp").forward(req, resp);
+		
 		
 		
 	}
@@ -89,26 +89,5 @@ public class QuestionDetailsController extends HttpServlet {
 	}
 		
 		
-		/*
-		 * resp.setContentType("text/html");
-		 * 
-		 * HttpSession session = req.getSession(); session.setAttribute("qid",
-		 * req.getParameter("qid"));
-		 * 
-		 * if (session.isNew()) {
-		 * 
-		 * } else { IQuestionDOO qdao = new QuestionDOO(); Question question =
-		 * qdao.getOneQuestionWithQuestionId(Integer.parseInt(req.getParameter("qid")));
-		 * IAnswerDOO dao = new AnswerDOO(); List<Answer> answers =
-		 * dao.getAnswerWithQid(Integer.parseInt(req.getParameter("qid")));
-		 * 
-		 * req.setAttribute("answers", answers); req.setAttribute("question", question);
-		 * 
-		 * req.getRequestDispatcher("WEB-INF/views/question-detail.jsp").forward(req,
-		 * resp);
-		 * 
-		 * 
-		 * }
-		 */
 	}
 
