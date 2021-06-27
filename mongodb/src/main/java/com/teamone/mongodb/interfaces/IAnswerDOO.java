@@ -25,5 +25,5 @@ public interface IAnswerDOO {
 
 	public boolean upsertFuntion(int answerId);
 	
-	public List<Answer> getAnswerWithQid(int qid);
+	public List<Answer> getAnswerWithQid(String qid);
 }

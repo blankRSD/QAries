@@ -1,4 +1,4 @@
-package com.teamone.webapp.controllers;
+  package com.teamone.webapp.controllers;
 
 import java.io.IOException;
 
@@ -7,7 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.teamone.postgres.contracts.IUserDAO;
+import com.teamone.postgres.dao.UserDAO;
 import com.teamone.postgres.entity.User;
 import com.teamone.webapp.beancreator.RegistrationCreator;
 import com.teamone.webapp.services.RegistrationService;
@@ -37,6 +40,12 @@ public class RegistrationController extends HttpServlet {
 		}
 		else {
 			RegistrationService.save(user);
+			HttpSession session   = req.getSession();
+			IUserDAO dao = new UserDAO();
+			User newUser= dao.getByEmail(user.getEmail());
+			session.setAttribute("name", newUser.getUsername());
+			session.setAttribute("email", newUser.getEmail());
+			session.setAttribute("userid", newUser.getUserId());
 			notification = "Successfully Registered";
 			req.setAttribute("notification", notification);
 			req.getRequestDispatcher("WEB-INF/views/dashboard.jsp").forward(req, resp);

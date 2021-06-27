@@ -23,26 +23,19 @@ public class QuestionDetailsController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		doPost(req, resp);
-		
-	}
-	
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//doPost(req, resp);
 		
 		resp.setContentType("text/html");
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("qid", req.getParameter("qid"));
+		//String qid=String.valueOf();
 		
-		if (session.isNew()) {
-			
-		} else {
+		if (session.getId()==session.getAttribute("sessionid")) {
 			IQuestionDOO qdao = new QuestionDOO();
-			Question question = qdao.getOneQuestionWithQuestionId(Integer.parseInt(req.getParameter("qid")));
+			Question question = qdao.getOneQuestionWithQuestionId(req.getParameter("qid"));
 			IAnswerDOO dao = new AnswerDOO();
-			List<Answer> answers = dao.getAnswerWithQid(Integer.parseInt(req.getParameter("qid")));
+			List<Answer> answers = dao.getAnswerWithQid(req.getParameter("qid"));
 			
 			req.setAttribute("answers", answers);
 			req.setAttribute("question", question);
@@ -50,7 +43,51 @@ public class QuestionDetailsController extends HttpServlet {
 			req.getRequestDispatcher("WEB-INF/views/question-detail.jsp").forward(req, resp);
 			
 			
+		} 
+		req.getRequestDispatcher("WEB-INF/views/invalidlogin.jsp").forward(req, resp);
+		
+		
+		
+	}
+	
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("text/html");
+		
+		HttpSession session = request.getSession();
+		
+		//int val = Integer.parseInt(request.getParameter("answerId"));
+		String description = request.getParameter("answerdescription");
+		String qid = session.getAttribute("qid").toString();
+		
+		IAnswerDOO dao1 = new AnswerDOO();
+		Answer answer = new Answer();
+		//answer.setAnswerId(val);
+		answer.setDescription(description);
+		answer.setQuestionId(qid);
+
+		boolean alpha = dao1.insertOne(answer);
+		if (alpha) {
+			
+			IQuestionDOO qdao = new QuestionDOO();
+			Question question = qdao.getOneQuestionWithQuestionId(qid);
+			IAnswerDOO dao = new AnswerDOO();
+			List<Answer> answers = dao.getAnswerWithQid(qid);
+			
+			request.setAttribute("answers", answers);
+			request.setAttribute("question", question);
+			
+			request.getRequestDispatcher("WEB-INF/views/question-detail.jsp").forward(request, response);
+			
+			//request.getRequestDispatcher("question-detail?qid=" + session.getAttribute("qid")).forward(request, response);
+		} else {
+			request.getRequestDispatcher("WEB-INF/views/question-detail.jsp").forward(request, response);
 		}
 		
 	}
-}
+		
+		
+	}
+

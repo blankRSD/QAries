@@ -11,12 +11,12 @@ public class App2 {
 	public static void main(String[] args) {
 		
 		IUserDAO dao = new UserDAO();
-		/*
-		User user = new User(1, "raj", "somethign@nothing.com","pass", "https://a.cmo", "https://a.cmo", "https://a.cmo");
-		log.info("{}", dao.insert(user));
 		
-		*/
-		log.info("{}", dao.getByEmail("no12@some1.com"));
+		User user = new User("raj", "anotherthing@nothing.com", "https://a.cmo");
+		//log.info("{}", dao.insert(user));
+		
+		
+		log.info("{}", dao.getByEmail("somethign@nothing.com"));
 		
 	}
 }

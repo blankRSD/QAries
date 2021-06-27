@@ -1,4 +1,5 @@
 package com.teamone.mongodb.dao;
+import org.bson.types.ObjectId;
 
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.gte;
@@ -33,6 +34,8 @@ public class QuestionDOO implements IQuestionDOO {
 		try {
 			MongoClient mc = MongoConn.mongoUtil();
 			MongoDatabase questionTable = mc.getDatabase("question");
+			ObjectId id1 = new ObjectId();
+			question.setQuestionId(id1.toString());
 			MongoCollection<Question> questionCollection = questionTable.getCollection("question", Question.class);
 			Date dt = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -61,7 +64,7 @@ public class QuestionDOO implements IQuestionDOO {
 	}
 	
 	@Override
-	public Question getOneQuestionWithQuestionId(int id) {
+	public Question getOneQuestionWithQuestionId(String id) {
 		try {
 			MongoClient mc = MongoConn.mongoUtil();
 			MongoDatabase questionTable = mc.getDatabase("question");
@@ -148,7 +151,7 @@ public class QuestionDOO implements IQuestionDOO {
 	// test cases likhne hain
 
 	@Override
-	public boolean deleteOne(int questionId) {
+	public boolean deleteOne(String questionId) {
 		try {
 			MongoClient mc = MongoConn.mongoUtil();
 			MongoDatabase questionTable = mc.getDatabase("question");
@@ -167,7 +170,7 @@ public class QuestionDOO implements IQuestionDOO {
 	}
 
 	@Override
-	public boolean upsertFuntion(int questionId) {
+	public boolean upsertFuntion(String questionId) {
 		try {
 			MongoClient mc = MongoConn.mongoUtil();
 			MongoDatabase questionTable = mc.getDatabase("question");

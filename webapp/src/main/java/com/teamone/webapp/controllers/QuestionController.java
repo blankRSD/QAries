@@ -27,16 +27,17 @@ public class QuestionController extends HttpServlet {
 		resp.setContentType("text/html");
 		HttpSession session = req.getSession();
 		
-		if(session.isNew()) {
-			
-		}
-		else {
+		if (session.getId()==session.getAttribute("sessionid")) {
 			IQuestionDOO dao = new QuestionDOO();
 			List<Question> questions = dao.getAllQuestions();
 			
 			req.setAttribute("questions", questions);
 			req.getRequestDispatcher("WEB-INF/views/question.jsp").forward(req, resp);
-		}
+	
+			
+		} 
+		req.getRequestDispatcher("WEB-INF/views/invalidlogin.jsp").forward(req, resp);
+		
 	}
 
 }

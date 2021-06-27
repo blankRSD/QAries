@@ -10,9 +10,7 @@
 	  <div class="card-body">
 	    <p>
 	    	<form action='insert-question' method='post'>
-	    		<div class="my-3">
-					<input type='text' name='questionId' class="form-control" placeholder="question Id" />
-	    		</div>
+	    		
 	    		<div class="my-3">	    		
 	    			<input type='text' name='questiontitle' class="form-control" placeholder="Question Title" />
 	    		</div>

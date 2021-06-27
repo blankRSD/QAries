@@ -1,3 +1,4 @@
+
 package com.teamone.webapp.controllers;
 
 import java.io.IOException;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/dashboard")
-public class DashboardContorller extends HttpServlet{
+@WebServlet("/logout")
+public class LogOutController extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doPost(req, res);
@@ -21,15 +22,10 @@ public class DashboardContorller extends HttpServlet{
 
 		res.setContentType("text/html");
 		
-		//HttpSession session1 = req.getSession();
-		//session1.invalidate();
-		HttpSession session = req.getSession();
-		if (session.getId()==session.getAttribute("sessionid")) {
-			req.getRequestDispatcher("WEB-INF/views/dashboard.jsp").forward(req, res);
-	
-			
-		} 
-		req.getRequestDispatcher("WEB-INF/views/invalidlogin.jsp").forward(req, res);
+		HttpSession session1 = req.getSession();
+		session1.invalidate();
+		
+	req.getRequestDispatcher("index.jsp").forward(req, res);
 		
 	}
 }

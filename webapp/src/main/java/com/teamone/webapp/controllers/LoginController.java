@@ -40,6 +40,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("name", newUser.getUsername());
 			session.setAttribute("email", newUser.getEmail());
 			session.setAttribute("userid", newUser.getUserId());
+			session.setAttribute("sessionid", session.getId());
 			
 			req.setAttribute("registerMessage", "successful login");
 			req.getRequestDispatcher("WEB-INF/views/dashboard.jsp").forward(req, res);
