@@ -39,7 +39,7 @@ public class InsertAnswerController extends HttpServlet {
 		
 		int val = Integer.parseInt(request.getParameter("answerId"));
 		String description = request.getParameter("answerdescription");
-		int qid = Integer.parseInt(session.getAttribute("qid").toString());
+		String qid = session.getAttribute("qid").toString();
 		
 		IAnswerDOO dao = new AnswerDOO();
 		Answer answer = new Answer();
