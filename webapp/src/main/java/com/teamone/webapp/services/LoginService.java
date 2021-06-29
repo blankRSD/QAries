@@ -9,7 +9,10 @@ public class LoginService {
 		
 		IUserDAO dao = new UserDAO();
 		User user = dao.getByEmail(userLogin.getEmail());
-		return userLogin.getEmail().equals(user.getEmail()) && userLogin.getPassword().equals(user.getPassword()); 
+		if(user != null)
+			return userLogin.getEmail().equals(user.getEmail()) && userLogin.getPassword().equals(user.getPassword()); 
+		
+		return false;
 		
 	}
 

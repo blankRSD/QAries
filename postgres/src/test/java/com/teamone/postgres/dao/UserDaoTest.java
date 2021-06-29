@@ -27,5 +27,10 @@ public class UserDaoTest {
 		boolean res = dao.insert(new User("someone", "some@not.com", "pass1234"));
 		assertTrue(res);		
 	}
+	
+	@Test
+	public void getByIdTest() {
+		User user = dao.getById(1);
+	}
 
 }

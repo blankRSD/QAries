@@ -46,6 +46,7 @@ public class RegistrationController extends HttpServlet {
 			session.setAttribute("name", newUser.getUsername());
 			session.setAttribute("email", newUser.getEmail());
 			session.setAttribute("userid", newUser.getUserId());
+			session.setAttribute("sessionid", session.getId());
 			notification = "Successfully Registered";
 			req.setAttribute("notification", notification);
 			req.getRequestDispatcher("WEB-INF/views/dashboard.jsp").forward(req, resp);
